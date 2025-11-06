@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💗 Mohit & Komal 💗</title>
+<style>
+  * {margin: 0; padding: 0; box-sizing: border-box;}
+  body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ffd6e8, #fff0f5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1 {
+    font-size: 2.2em;
+    color: #d63384;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 8s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(40px);}
+    50% {opacity: 1; transform: translateY(0);}
+    100% {opacity: 1;}
+  }
+
+  .heart {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff4d6d;
+    transform: rotate(45deg);
+    animation: fall 6s linear infinite;
+  }
+  .heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff4d6d;
+    border-radius: 50%;
+  }
+  .heart::before { top: -7.5px; left: 0; }
+  .heart::after { left: 7.5px; top: 0; }
+
+  @keyframes fall {
+    0% {top: -10%; opacity: 1; transform: rotate(45deg) translateX(0);}
+    100% {top: 110%; opacity: 0; transform: rotate(45deg) translateX(20px);}
+  }
+</style>
+</head>
+<body>
+
+<h1 id="text"></h1>
+
+<script>
+const lines = [
+  "Hi... it’s me, Mohit 🥺",
+  "I know I’ve made mistakes, Komal 💔",
+  "Sometimes we hurt the one who cares the most 💭",
+  "If I could go back in time, I’d choose your smile over my ego 💗",
+  "I miss your laughter, your talks, your vibe 💫",fir bhi agar me aapko galt lgu to aapki marzi
+  "Every moment without you feels incomplete 😢",me aapko chata hoon yrr 
+  "You’re not just someone... you’re everything to me 🌸",
+  "I’m really sorry for every tear I caused 💧",
+  "Please forgive me, Komal 💌", always love youu 
+  "Because some hearts only beat for one soul 💖 — Yours, Mohit 💞"
+];
+
+const text = document.getElementById("text");
+let i = 0;
+
+function showNextLine() {
+  text.style.opacity = 0;
+  setTimeout(() => {
+    text.textContent = lines[i];
+    text.style.opacity = 1;
+    i++;
+    if (i < lines.length) setTimeout(showNextLine, 8000);
+  }, 1000);
+}
+showNextLine();
+
+// Heart rain
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 200);
+</script>
+
+<!-- Optional background music -->
+<audio autoplay loop>
+  <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+</audio>
+
+</body>
+</html>
